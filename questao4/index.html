@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verificar Quadrado Perfeito</title>
+  <style>
+    body {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: center;
+      padding: 8px;
+      border-bottom: 1px solid #4d1616;
+    }
+
+    th {
+      background-color: #220505;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #449362;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #8B0000;
+    }
+
+    .container {
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #333333;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  <script>
+    function isPerfectSquare(number) {
+      const squareRoot = Math.sqrt(number);
+      return squareRoot === Math.floor(squareRoot);
+    }
+
+    function checkSquare() {
+      const input = document.getElementById("numberInput").value;
+      const number = parseInt(input);
+
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = "";
+
+      if (isNaN(number) || number < 0) {
+        resultElement.textContent = "Número inválido. Por favor, digite um número positivo.";
+      } else {
+        if (isPerfectSquare(number)) {
+          resultElement.textContent = number + " é um quadrado perfeito!";
+          resultElement.style.color = "#449362";
+        } else {
+          resultElement.textContent = number + " não é um quadrado perfeito.";
+          resultElement.style.color = "#8B0000";
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Verificar Quadrado Perfeito</h1>
+    <p>Digite um número para verificar se é um quadrado perfeito:</p>
+    <input type="number" id="numberInput">
+    <button onclick="checkSquare()">Verificar</button>
+    <p id="result"></p>
+    <table>
+      <tr>
+        <th>Número</th>
+        <th>Quadrado Perfeito</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>36</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>49</td>
+        <td>7</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

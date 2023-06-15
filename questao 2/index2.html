@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verificar a validade de uma senha</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    .container {
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #449362;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #449362;
+    }
+  </style>
+  <script>
+    function validatePassword() {
+      const password = document.getElementById("passwordInput").value;
+
+      // Critérios da senha
+      const lengthCriteria = password.length >= 8;
+      const uppercaseCriteria = /[A-Z]/.test(password);
+      const lowercaseCriteria = /[a-z]/.test(password);
+      const numberCriteria = /[0-9]/.test(password);
+
+      if (lengthCriteria && uppercaseCriteria && lowercaseCriteria && numberCriteria) {
+        document.getElementById("result").textContent = "Senha válida!";
+      } else {
+        document.getElementById("result").textContent = "Senha inválida!";
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Verificar a validade de uma senha</h1>
+    <p>Insira uma senha para verificar se é válida:</p>
+    <input type="password" id="passwordInput">
+    <button onclick="validatePassword()">Verificar</button>
+    <p id="result"></p>
+  </div>
+</body>
+</html>

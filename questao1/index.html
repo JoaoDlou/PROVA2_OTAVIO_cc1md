@@ -1,0 +1,56 @@
+<html>
+<head>
+  <title>Verificar se um número é primo</title>
+  <style>
+    body {
+      background-color: #449362;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+  </style>
+  <script>
+    function isPrime(number) {
+      if (number < 2) {
+        return false;
+      }
+      for (let i = 2; i <= Math.sqrt(number); i++) {
+        if (number % i === 0) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function listPrimes() {
+        const primes = [];
+        for (let number = 1; number <= 1000; number++) {
+            if (isPrime(number)) {
+                primes.push(number);
+            }
+        }
+        return primes;
+    }
+
+    function checkPrime() {
+        const input = document.getElementById("numberInput").value;
+        const number = parseInt(input);
+
+        if (isNaN(number) || number < 1 || number > 1000) {
+            alert("Número inválido. Por favor, digite um número entre 1 e 1000.");
+        } else {
+            const primes = listPrimes();
+            if (primes.includes(number)) {
+                alert(number + " é um número primo!");
+            } else {
+                alert(number + " não é um número primo.");
+            }
+        }
+    }
+  </script>
+</head>
+<body>
+  <h1>Verificar se um número é primo</h1>
+  <p>Digite um número até 1000 para verificar se é primo:</p>
+  <input type="number" id="numberInput" min="1" max="1000">
+  <button onclick="checkPrime()">Verificar</button>
+</body>
+</html>

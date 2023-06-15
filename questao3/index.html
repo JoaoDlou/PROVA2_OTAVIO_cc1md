@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cálculo do Fatorial</title>
+  <style>
+    body {
+      background-color: #449362;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+  <script>
+    function factorial(number) {
+      if (number === 0 || number === 1) {
+        return 1;
+      } else {
+        let result = 1;
+        let expression = "";
+        for (let i = 1; i <= number; i++) {
+          result *= i;
+          expression += i;
+          if (i < number) {
+            expression += " * ";
+          }
+        }
+        return `${expression} = ${result}`;
+      }
+    }
+
+    function calculateFactorial() {
+      const input = document.getElementById("numberInput").value;
+      const number = parseInt(input);
+
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = "";
+
+      if (isNaN(number) || number < 1 || number > 10) {
+        resultElement.textContent = "Número inválido. Por favor, digite um número de 1 a 10.";
+      } else {
+        const calculation = factorial(number);
+        resultElement.textContent = calculation;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Cálculo do Fatorial</h1>
+  <p>Insira um número de 1 a 10 para calcular o fatorial:</p>
+  <input type="number" id="numberInput" min="1" max="10">
+  <button onclick="calculateFactorial()">Calcular</button>
+  <p id="result"></p>
+</body>
+</html>
